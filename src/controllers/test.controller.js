@@ -48,7 +48,7 @@ var putTest = (req, res, next) => {
         }
         else
         {
-            res.json({"IsSuccess" : true,"message" : "User has been updated successfully."}).status(200);
+            res.json({"IsSuccess" : true,"message" : "Testdata has been updated successfully."}).status(200);
         }
     })
 };
@@ -61,7 +61,7 @@ var deleteTest = (req, res, next) => {
         }
         else
         {
-            res.json({"IsSuccess" : true,"message" : "User has been updated successfully."}).status(200);
+            res.json({"IsSuccess" : true,"message" : "Testdata has been deleted successfully."}).status(200);
         }
     })
 };

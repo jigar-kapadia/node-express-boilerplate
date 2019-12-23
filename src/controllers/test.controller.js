@@ -22,7 +22,9 @@ var postTest = (req, res, next) => {
         if (err)
             next(err);
         else
-            res.json({ status: "success", message: "Added successfully!!!", data: null });
+        {
+            res.json({ status: "success", message: "Added successfully!!!", data: result });
+        }
     });
 //res.json({ status: "success", message: "Added successfully!!!", data: null });
  };

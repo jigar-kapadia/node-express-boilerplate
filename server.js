@@ -12,7 +12,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 //routes
 const testRouter = require('./src/routes/test.route');
+const customerRoute = require('./src/routes/customer.route');
 app.use('/api/test', testRouter);
+app.use('/api/customer', customerRoute);
 
 //swagger setup
 const swaggerUI = require('swagger-ui-express');

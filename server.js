@@ -3,7 +3,11 @@ const app = express();
 const port = process.env.PORT || 3000;
 const mongoose = require('./src/config/db.config');
 const morganLogger = require('morgan');
+const jwt = require('jsonwebtoken');
+const secretKey = process.env.JWTSecretKey;
 
+
+//CORS handling
 app.use(function (req, res, next) {
 
     // Website you wish to allow to connect
@@ -31,8 +35,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //routes
 const testRouter = require('./src/routes/test.route');
 const customerRoute = require('./src/routes/customer.route');
-app.use('/api/test', testRouter);
+const userRoutes = require('./src/routes/user.routes');
+app.use('/api/test', validateUser, testRouter);
 app.use('/api/customer', customerRoute);
+app.use('/api/user', userRoutes);
 
 //swagger setup
 const swaggerUI = require('swagger-ui-express');
@@ -75,7 +81,19 @@ app.listen(port, (req, res) => {
     console.log('Server started at port : '+ port);
 })
 
-
+//Validate JWT for all Request
+function validateUser(req, res, next) {
+    jwt.verify(req.headers['access-token'], secretKey, function(err, decoded) {
+      if (err) {
+        res.json({status:"error", message: err.message, data:null});
+      }else{
+        // add user id to request
+        req.body.userId = decoded.id;
+        next();
+      }
+    });
+    
+  }
 
 
 // OpenAPI specification

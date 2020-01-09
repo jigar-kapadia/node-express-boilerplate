@@ -1,86 +1,131 @@
 {
-    "swagger": "2.0",
-    "info": {
-      "version": "1.0.0",
-      "title": "Test Node js API",
-      "license": {
-        "name": "MIT",
-        "url": "https://opensource.org/licenses/MIT"
-      }
-    },
-    "host": "express-api-swagger.herokuapp.com/",
-    "basePath": "api",
-    "tags": [
-      {
-        "name": "Test",
-        "description": "API for test data in the system"
-      }
-    ],
-    "schemes": [
-      "https"
-    ],
-    "consumes": [
-      "application/json"
-    ],
-    "produces": [
-      "application/json"
-    ],
-    "paths": {
-      "/test" :{
-        "get" :{
-          "tags":[
-            "Test"
-          ],
-          "parameters": [
-           
-          ],
-          "summary" : "Get all Tests",
-          "responses" :{
-            "200": {
-              "description": "OK",
-              "schema": {
-                "$ref": "#/definitions/Tests"
-              }
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Test Node js API",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "host": "localhost:3000/",
+  "basePath": "api",
+  "tags": [
+    {
+      "name": "Test",
+      "description": "API for test data in the system"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/test": {
+      "get": {
+        "tags": [
+          "Test"
+        ],
+        "parameters": [
+          {
+            "name": "access-token",
+            "in": "header",
+            "type": "string",
+            "required": "true"
+          }
+        ],
+        "summary": "Get all Tests",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Tests"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Test"
+        ],
+        "summary": "Create New Tests",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Tests"
             }
           }
         },
-        "post": {
-          "tags": [
-            "Test"
-          ],
-          "summary" : "Create New Tests",
-          "responses" :{
-            "200": {
-              "description": "OK",
-              "schema": {
-                "$ref": "#/definitions/Tests"
-              }
-            }
+        "description": "Create New Tests",
+        "parameters": [
+          {
+            "name": "access-token",
+            "in": "header",
+            "type": "string",
+            "required": "true"
           },
-          "description": "Create New Tests",
-          "parameters": [
-              {
-                "name": "x-access-token",
-                "in": "header",
-                "type" : "string",
-                "required" : "false"
-              },
-            {
-              "name": "test",
-              "in": "body",
-              "description": "Test that we want to create",
-              "schema": {
-                "$ref": "#/definitions/Test"
-              }
+          {
+            "name": "test",
+            "in": "body",
+            "description": "Test that we want to create",
+            "schema": {
+              "$ref": "#/definitions/Test"
             }
-          ],
-          "produces": [
-            "application/json"
-          ]
+          }
+        ],
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
+    "/test/{testid}": {
+      "parameters": [
+        {
+          "name": "access-token",
+          "in": "header",
+          "type": "string",
+          "required": "true"
+        },
+        {
+          "name": "testid",
+          "in": "path",
+          "required": true,
+          "description": "ID of testdata that we want to find",
+          "type": "string"
+        }
+      ],
+      "get": {
+        "tags": [
+          "Test"
+        ],
+        "summary": "Get testdata with given ID",
+        "responses": {
+          "200": {
+            "description": "Test is found",
+            "schema": {
+              "$ref": "#/definitions/Test"
+            }
+          }
         }
       },
-      "/test/{testid}": {
+      "delete": {
+        "summary": "Delete Testdata with given ID",
+        "tags": [
+          "Test"
+        ],
         "parameters": [
+          {
+            "name": "access-token",
+            "in": "header",
+            "type": "string",
+            "required": "true"
+          },
           {
             "name": "testid",
             "in": "path",
@@ -89,97 +134,174 @@
             "type": "string"
           }
         ],
-        "get": {
-          "tags": [
-            "Test"
-          ],
-          "summary": "Get testdata with given ID",
-          "responses": {
-            "200": {
-              "description": "Test is found",
-              "schema": {
-                "$ref": "#/definitions/Test"
-              }
+        "responses": {
+          "200": {
+            "description": "Test is deleted",
+            "schema": {
+              "$ref": "#/definitions/Test"
             }
           }
-        },
-        "delete": {
-          "summary": "Delete Testdata with given ID",
-          "tags": [
-            "Test"
-          ],"parameters": [
-           
-            {
+        }
+      },
+      "put": {
+        "summary": "Update Testdata with give ID",
+        "tags": [
+          "Test"
+        ],
+        "parameters": [
+          {
+            "name": "access-token",
+            "in": "header",
+            "type": "string",
+            "required": "true"
+          },
+          {
             "name": "testid",
             "in": "path",
             "required": true,
-            "description": "ID of testdata that we want to find",
             "type": "string"
-          }
-          ],
-          "responses": {
-            "200": {
-              "description": "Test is deleted",
-              "schema": {
-                "$ref": "#/definitions/Test"
-              }
+          },
+          {
+            "name": "test",
+            "in": "body",
+            "description": "Test with new values of properties",
+            "schema": {
+              "$ref": "#/definitions/Test"
             }
           }
-        },
-        "put": {
-          "summary": "Update Testdata with give ID",
-          "tags": [
-            "Test"
-          ],
-          "parameters": [
-            {
-              "name": "test",
-              "in": "body",
-              "description": "Test with new values of properties",
-              "schema": {
-                "$ref": "#/definitions/Test"
-              }
-            },
-            {
-            "name": "testid",
-            "in": "path",
-            "required": true,
-            "description": "ID of testdata that we want to find",
-            "type": "string"
-          }
-          ],
-          "responses": {
-            "200": {
-              "description": "Test is updated",
-              "schema": {
-                "$ref": "#/definitions/Test"
-              }
+          
+        ],
+        "responses": {
+          "200": {
+            "description": "Test is updated",
+            "schema": {
+              "$ref": "#/definitions/Test"
             }
           }
         }
       }
     },
-    "definitions": {
-      "Test" :{
-        "required": [
-          "name",
-          "number"
+    "/user/login": {
+      "post": {
+        "tags": [
+          "User"
         ],
-        "properties": {
-          "_id": {
-            "type": "string"
-          },
-          "name": {
-            "type": "string"
-          },
-          "contact": {
-            "type": "number"
+        "summary": "Login User",
+        
+        "description": "Login User",
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "description": "User's credential that we want to authenticate",
+            "schema": {
+              "$ref": "#/definitions/Login"
+            }
           }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+            
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
+    "/user" :{
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Create User",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        },
+        "description": "Create New User",
+        "parameters": [{
+          "name": "access-token",
+          "in": "header",
+          "type": "string",
+          "required": "true"
+        },
+          {
+            "name": "user",
+            "in": "body",
+            "description": "User Creation",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "Test": {
+      "required": [
+        "name",
+        "number"
+      ],
+      "properties": {
+        "_id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "contact": {
+          "type": "number"
         }
-      },
-      "Tests" :{
-        "type": "array",
-        "$ref": "#/definitions/Test"
-      }      
+      }
+    },
+    "Tests": {
+      "type": "array",
+      "$ref": "#/definitions/Test"
+    },
+    "User": {
+      "required": [
+        "email",
+        "_id"
+      ],
+      "properties": {
+        "_id": {
+          "type": "string",
+          "uniqueItems": true
+        },
+        "email": {
+          "type": "string",
+          "uniqueItems": true
+        },
+        "username": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "role": {
+          "type": "string"
+        }
+      }
+    },
+    "Login" :{
+      "properties" : {
+        "username": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
     }
   }
+}

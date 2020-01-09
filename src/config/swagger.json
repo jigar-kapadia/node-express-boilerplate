@@ -1,301 +1,297 @@
 {
-    "swagger": "2.0",
-    "info": {
-      "version": "1.0.0",
-      "title": "Blogg Application API",
-      "description": "Node.js Blogg Application API",
-      "license": {
-        "name": "MIT",
-        "url": "https://opensource.org/licenses/MIT"
-      }
-    },
-    "host": "localhost:3000/",
-    "basePath": "api",
-    "tags": [
-      {
-        "name": "Users",
-        "description": "API for users in the system"
-      }
-    ],
-    "schemes": [
-      "http"
-    ],
-    "consumes": [
-      "application/json"
-    ],
-    "produces": [
-      "application/json"
-    ],
-    "paths": {
-      "/users": {
-        "post": {
-          "tags": [
-            "Users"
-          ],
-          "description": "Create new user in system",
-          "parameters": [
-            {
-              "name": "user",
-              "in": "body",
-              "description": "User that we want to create",
-              "schema": {
-                "$ref": "#/definitions/User"
-              }
-            }
-          ],
-          "produces": [
-            "application/json"
-          ],
-          "responses": {
-            "200": {
-              "description": "New user is created",
-              "schema": {
-                "$ref": "#/definitions/User"
-              }
-            }
-          }
-        },
-        "get": {
-          "tags": [
-            "Users"
-          ],
-          "summary": "Get all users in system",
-          "responses": {
-            "200": {
-              "description": "OK",
-              "schema": {
-                "$ref": "#/definitions/Users"
-              }
-            }
-          }
-        }
-      },
-      "/users/{userId}": {
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Blogg Application API",
+    "description": "Node.js Blogg Application API",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "host": "https://express-api-swagger.herokuapp.com/",
+  "basePath": "api",
+  "tags": [
+    {
+      "name": "Users",
+      "description": "API for users in the system"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/users": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "description": "Create new user in system",
         "parameters": [
           {
-            "name": "userId",
-            "in": "path",
-            "required": true,
-            "description": "ID of user that we want to find",
-            "type": "string"
+            "name": "user",
+            "in": "body",
+            "description": "User that we want to create",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
           }
         ],
-        "get": {
-          "tags": [
-            "Users"
-          ],
-          "summary": "Get user with given ID",
-          "responses": {
-            "200": {
-              "description": "User is found",
-              "schema": {
-                "$ref": "#/definitions/User"
-              }
-            }
-          }
-        },
-        "delete": {
-          "summary": "Delete user with given ID",
-          "tags": [
-            "Users"
-          ],
-          "responses": {
-            "200": {
-              "description": "User is deleted",
-              "schema": {
-                "$ref": "#/definitions/User"
-              }
-            }
-          }
-        },
-        "put": {
-          "summary": "Update user with give ID",
-          "tags": [
-            "Users"
-          ],
-          "parameters": [
-            {
-              "name": "user",
-              "in": "body",
-              "description": "User with new values of properties",
-              "schema": {
-                "$ref": "#/definitions/User"
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "User is updated",
-              "schema": {
-                "$ref": "#/definitions/User"
-              }
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "New user is created",
+            "schema": {
+              "$ref": "#/definitions/User"
             }
           }
         }
       },
-      "/test" :{
-        "get" :{
-          "tags":[
-            "Tests"
-          ],
-          "parameters": [
-           
-          ],
-          "summary" : "Get all Tests",
-          "responses" :{
-            "200": {
-              "description": "OK",
-              "schema": {
-                "$ref": "#/definitions/Tests"
-              }
-            }
-          }
-        },
-        "post": {
-          "tags": [
-            "Tests"
-          ],
-          "summary" : "Create New Tests",
-          "responses" :{
-            "200": {
-              "description": "OK",
-              "schema": {
-                "$ref": "#/definitions/Tests"
-              }
-            }
-          },
-          "description": "Create New Tests",
-          "parameters": [
-              {
-                "name": "x-access-token",
-                "in": "header",
-                "type" : "string",
-                "required" : "false"
-              },
-            {
-              "name": "test",
-              "in": "body",
-              "description": "Test that we want to create",
-              "schema": {
-                "$ref": "#/definitions/Test"
-              }
-            }
-          ],
-          "produces": [
-            "application/json"
-          ]
-        }
-      },
-      "countries" :{
-        "get" :{
-          "tags":[
-            "Countries"
-          ],
-          "summary" : "Get all Countries",
-          "responses" :{
-            "200": {
-              "description": "OK",
-              "schema": {
-                "$ref": "#/definitions/Tests"
-              }
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Get all users in system",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Users"
             }
           }
         }
-      },
-      "states" :{
-       "get" :{
-         "tags":[
-           "States"
-         ],
-         "summary" : "Get all States",
-         "responses" :{
-           "200": {
-             "description": "OK"
-           }
-         }
-       }
-     },
-     "states/{countryid}" :{
+      }
+    },
+    "/users/{userId}": {
       "parameters": [
-       {
-         "name": "countryid",
-         "in": "path",
-         "required": true,
-         "description": "ID of user that we want to find",
-         "type": "string"
-       }
-     ],
-     "get": {
-       "tags": [
-         "State"
-       ],
-       "summary": "Get user with given Country ID",
-       "responses": {
-         "200": {
-           "description": "User is found",
-           "schema": {
-             "$ref": "#/definitions/States"
-           }
-         }
-       }
-       
-     }
-     },
-     "cities" :{
-      "get" :{
-        "tags":[
-          "Cities"
+        {
+          "name": "userId",
+          "in": "path",
+          "required": true,
+          "description": "ID of user that we want to find",
+          "type": "string"
+        }
+      ],
+      "get": {
+        "tags": [
+          "Users"
         ],
-        "summary" : "Get all Cities",
-        "responses" :{
+        "summary": "Get user with given ID",
+        "responses": {
+          "200": {
+            "description": "User is found",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete user with given ID",
+        "tags": [
+          "Users"
+        ],
+        "responses": {
+          "200": {
+            "description": "User is deleted",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Update user with give ID",
+        "tags": [
+          "Users"
+        ],
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "description": "User with new values of properties",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User is updated",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        }
+      }
+    },
+    "/test": {
+      "get": {
+        "tags": [
+          "Tests"
+        ],
+        "parameters": [],
+        "summary": "Get all Tests",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Tests"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Tests"
+        ],
+        "summary": "Create New Tests",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Tests"
+            }
+          }
+        },
+        "description": "Create New Tests",
+        "parameters": [
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "type": "string",
+            "required": "false"
+          },
+          {
+            "name": "test",
+            "in": "body",
+            "description": "Test that we want to create",
+            "schema": {
+              "$ref": "#/definitions/Test"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
+    "countries": {
+      "get": {
+        "tags": [
+          "Countries"
+        ],
+        "summary": "Get all Countries",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Tests"
+            }
+          }
+        }
+      }
+    },
+    "states": {
+      "get": {
+        "tags": [
+          "States"
+        ],
+        "summary": "Get all States",
+        "responses": {
           "200": {
             "description": "OK"
           }
         }
       }
     },
-    "cities/{stateid}" :{
-     "parameters": [
-      {
-        "name": "stateid",
-        "in": "path",
-        "required": true,
-        "description": "ID of state of which we want to find cities",
-        "type": "string"
-      }
-    ],
-    "get": {
-      "tags": [
-        "Cities"
+    "states/{countryid}": {
+      "parameters": [
+        {
+          "name": "countryid",
+          "in": "path",
+          "required": true,
+          "description": "ID of user that we want to find",
+          "type": "string"
+        }
       ],
-      "summary": "Get Cities with given State ID",
-      "responses": {
-        "200": {
-          "description": "User is found",
-          "schema": {
-            "$ref": "#/definitions/Cities"
+      "get": {
+        "tags": [
+          "State"
+        ],
+        "summary": "Get user with given Country ID",
+        "responses": {
+          "200": {
+            "description": "User is found",
+            "schema": {
+              "$ref": "#/definitions/States"
+            }
           }
         }
       }
-      
-    }
     },
-    "employee" : {
-      "get" :{
-        "tags":[
+    "cities": {
+      "get": {
+        "tags": [
+          "Cities"
+        ],
+        "summary": "Get all Cities",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "cities/{stateid}": {
+      "parameters": [
+        {
+          "name": "stateid",
+          "in": "path",
+          "required": true,
+          "description": "ID of state of which we want to find cities",
+          "type": "string"
+        }
+      ],
+      "get": {
+        "tags": [
+          "Cities"
+        ],
+        "summary": "Get Cities with given State ID",
+        "responses": {
+          "200": {
+            "description": "User is found",
+            "schema": {
+              "$ref": "#/definitions/Cities"
+            }
+          }
+        }
+      }
+    },
+    "employee": {
+      "get": {
+        "tags": [
           "Employee"
         ],
         "parameters": [
           {
             "name": "x-access-token",
             "in": "header",
-            "description": "Json Web Token",              
-            "type" : "string",
-            "required" : "true"
+            "description": "Json Web Token",
+            "type": "string",
+            "required": "true"
           }
         ],
-        "summary" : "Get all Employees",
-        "responses" :{
+        "summary": "Get all Employees",
+        "responses": {
           "200": {
             "description": "OK",
             "schema": {
@@ -308,15 +304,15 @@
         "tags": [
           "Employee"
         ],
-        "summary" : "Create New Employee",
+        "summary": "Create New Employee",
         "description": "Create New Employee",
         "parameters": [
-            {
-              "name": "x-access-token",
-              "in": "header",
-              "type" : "string",
-              "required" : "true"
-            },
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "type": "string",
+            "required": "true"
+          },
           {
             "name": "employee",
             "in": "body",
@@ -339,7 +335,7 @@
         }
       }
     },
-    "employee/{id}" :{
+    "employee/{id}": {
       "parameters": [
         {
           "name": "id",
@@ -402,57 +398,57 @@
         }
       }
     }
+  },
+  "definitions": {
+    "User": {
+      "required": [
+        "email",
+        "_id"
+      ],
+      "properties": {
+        "_id": {
+          "type": "string",
+          "uniqueItems": true
+        },
+        "email": {
+          "type": "string",
+          "uniqueItems": true
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "firstName": {
+          "type": "string"
+        }
+      }
     },
-    "definitions": {
-      "User": {
-        "required": [
-          "email",
-          "_id"
-        ],
-        "properties": {
-          "_id": {
-            "type": "string",
-            "uniqueItems": true
-          },
-          "email": {
-            "type": "string",
-            "uniqueItems": true
-          },
-          "lastName": {
-            "type": "string"
-          },
-          "firstName": {
-            "type": "string"
-          }
+    "Users": {
+      "type": "array",
+      "$ref": "#/definitions/User"
+    },
+    "Test": {
+      "required": [
+        "name",
+        "number"
+      ],
+      "properties": {
+        "_id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "contact": {
+          "type": "number"
         }
-      },
-      "Users": {
-        "type": "array",
-        "$ref": "#/definitions/User"
-      },
-      "Test" :{
-        "required": [
-          "name",
-          "number"
-        ],
-        "properties": {
-          "_id": {
-            "type": "string"
-          },
-          "name": {
-            "type": "string"
-          },
-          "contact": {
-            "type": "number"
-          }
-        }
-      },
-      "Tests" :{
-        "type": "array",
-        "$ref": "#/definitions/Test"
-      },
-      "Country" : {
-       "properties": {
+      }
+    },
+    "Tests": {
+      "type": "array",
+      "$ref": "#/definitions/Test"
+    },
+    "Country": {
+      "properties": {
         "id": {
           "type": "Number",
           "uniqueItems": true
@@ -467,96 +463,116 @@
         "iso2": {
           "type": "string"
         },
-        "phone_code" : {
-         "type": "string"
+        "phone_code": {
+          "type": "string"
         },
-        "capital" : {
-         "type": "string"
+        "capital": {
+          "type": "string"
         },
-        "currency" :
-        {
-         "type": "string"
+        "currency": {
+          "type": "string"
         }
       }
-      },
-      "Countries" : {
-       "type": "array",
-       "$ref": "#/definitions/Country"
-      },
-      "State" : {
-       "properties" : {
-         "id": {
+    },
+    "Countries": {
+      "type": "array",
+      "$ref": "#/definitions/Country"
+    },
+    "State": {
+      "properties": {
+        "id": {
           "type": "Number"
         },
         "name": {
           "type": "string"
         },
-        "country_id" : {
-         "type": "string"
+        "country_id": {
+          "type": "string"
         }
-       }
-      }    ,
-      "States" : {
-       "type": "array",
-       "$ref": "#/definitions/State"
-      },
-      "City" : {
-        "properties" : {
-          "id": {
-           "type": "Number"
-         },
-         "name": {
-           "type": "string"
-         },
-         
-         "state_id" : {
+      }
+    },
+    "States": {
+      "type": "array",
+      "$ref": "#/definitions/State"
+    },
+    "City": {
+      "properties": {
+        "id": {
+          "type": "Number"
+        },
+        "name": {
           "type": "string"
-         },
-         "country_id" : {
+        },
+        "state_id": {
           "type": "string"
-         }
+        },
+        "country_id": {
+          "type": "string"
         }
-       },
-       "Cities" :
-       {
-        "type": "array",
-        "$ref": "#/definitions/City"
-       },
-       "Employee" : {
-        "properties" : {
-          "id": {
-           "type": "number"
-         },
-         "firstname": {
-           "type": "string"
-         },
-         
-         "lastname" : {
+      }
+    },
+    "Cities": {
+      "type": "array",
+      "$ref": "#/definitions/City"
+    },
+    "Employee": {
+      "properties": {
+        "id": {
+          "type": "number"
+        },
+        "firstname": {
           "type": "string"
-         },
-         "email" : {
+        },
+        "lastname": {
           "type": "string"
-         },
-         "contact" : { "type" : "number"},
-         "city_id" : {"type" : "number"},
-         "state_id" : {"type" : "number"},
-         "country_id" : {"type" : "number"},
-         "dateofbirth" : {"type" : "string"},
-         "dateofjoining" : {"type" : "string"},
-         "salary" : {"type" : "number"},
-         "gender" : { "type": "string" },
-         "depertment_id" : {"type" : "number"},
-         "isactive" : {"type" : "boolean"},
-          "skills" : {"type" : "string"},
-          "summary" : {"type" : "string"},
-          "experience" : {"type" :"number"}
+        },
+        "email": {
+          "type": "string"
+        },
+        "contact": {
+          "type": "number"
+        },
+        "city_id": {
+          "type": "number"
+        },
+        "state_id": {
+          "type": "number"
+        },
+        "country_id": {
+          "type": "number"
+        },
+        "dateofbirth": {
+          "type": "string"
+        },
+        "dateofjoining": {
+          "type": "string"
+        },
+        "salary": {
+          "type": "number"
+        },
+        "gender": {
+          "type": "string"
+        },
+        "depertment_id": {
+          "type": "number"
+        },
+        "isactive": {
+          "type": "boolean"
+        },
+        "skills": {
+          "type": "string"
+        },
+        "summary": {
+          "type": "string"
+        },
+        "experience": {
+          "type": "number"
         }
-       },
-       "Employees" : {
-        "type": "array",
-        "$ref": "#/definitions/Employee"
-       }
-       
-      
+      }
+    },
+    "Employees": {
+      "type": "array",
+      "$ref": "#/definitions/Employee"
     }
   }
+}

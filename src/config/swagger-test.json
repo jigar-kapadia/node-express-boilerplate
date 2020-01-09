@@ -8,7 +8,7 @@
         "url": "https://opensource.org/licenses/MIT"
       }
     },
-    "host": "express-api-swagger.herokuapp.com/",
+    "host": "localhost:3000/",
     "basePath": "api",
     "tags": [
       {
@@ -17,7 +17,7 @@
       }
     ],
     "schemes": [
-      "https"
+      "http"
     ],
     "consumes": [
       "application/json"

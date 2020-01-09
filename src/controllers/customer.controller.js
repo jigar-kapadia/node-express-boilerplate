@@ -1,5 +1,28 @@
 const customerModel = require('./../models/customer.model');
 const mongoDb = require('mongodb');
+var ftpClient = require('ftp-client');
+const ftpConfig = {
+    host : 'kreaserv.com',
+    port : 80,
+    user : 'jigar@kreaserv.com',
+    password : 'l0c@lh0st'
+}
+
+options = {
+    logging: 'basic'
+}
+
+client = new ftpClient(ftpConfig, options);
+
+var saveImage = (request, response, next) => {
+    client.upload(['assets/sample.jpg'],'/home/leadfxx1/public_html/kreaserv.com/jigar/', {
+
+    }, function (result) {
+        console.log(result);
+    })
+
+    response.status(200);
+};
 
 var getCustomer = (request, response, next) => {
     let customers = [];

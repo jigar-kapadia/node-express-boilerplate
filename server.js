@@ -6,6 +6,7 @@ const morganLogger = require('morgan');
 const jwt = require('jsonwebtoken');
 const secretKey = process.env.JWTSecretKey;
 
+
 //CORS handling
 app.use(function (req, res, next) {
 

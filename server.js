@@ -85,7 +85,7 @@ app.listen(port, (req, res) => {
 function validateUser(req, res, next) {
     jwt.verify(req.headers['access-token'], secretKey, function(err, decoded) {
       if (err) {
-        res.json({status:"error", message: err.message, data:null});
+        res.json({status:"error", message: err.message, data:null}).status(401);
       }else{
         // add user id to request
         req.body.userId = decoded.id;

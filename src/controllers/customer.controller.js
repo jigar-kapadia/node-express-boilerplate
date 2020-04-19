@@ -2,10 +2,7 @@ const customerModel = require('./../models/customer.model');
 const mongoDb = require('mongodb');
 var ftpClient = require('ftp-client');
 const ftpConfig = {
-    host : 'kreaserv.com',
-    port : 80,
-    user : 'jigar@kreaserv.com',
-    password : 'l0c@lh0st'
+    
 }
 
 options = {

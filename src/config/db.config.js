@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const username = process.env.mongoUser;
 const password = process.env.mongoPassword;
 const rawUrl = process.env.mongoUrl;
-const mongoDbUri ='mongodb://admin:admin123@ds117535.mlab.com:17535/meandb' //rawUrl.replace('{username}', username).replace('{password}', password)
+const mongoDbUri = rawUrl.replace('{username}', username).replace('{password}', password)
 mongoose.connect(mongoDbUri);
 mongoose.Promise = global.Promise;
 module.exports = mongoose;
